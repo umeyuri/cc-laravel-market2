@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('profile')->comment('プロフィール');
+            $table->string('image')->comment('プロフィール画像ファイル名');
         });
     }
 
