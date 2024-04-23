@@ -1,0 +1,7 @@
+.header_nav li{
+    list-style: none;
+    padding-right: 20px;
+}
+.header_nav ul{
+    display: flex;
+}
