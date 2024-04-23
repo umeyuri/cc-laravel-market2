@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [ItemController::class, 'index'])->name('items.index');
+
+Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
+
+Route::get('/likes', [LikeController::class, 'index'])->name('likes.index');
+
+Route::get('users/{user}/exhibitions', [ItemController::class, 'exhibition'])->name('users.exhibitions');
