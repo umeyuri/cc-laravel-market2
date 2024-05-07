@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use  App\Models\Order;
 
 class UserController extends Controller
 {
@@ -44,9 +45,14 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
+        $user = \Auth::user();
+        $order_items = $user->orderItems;
+
         return view('users.show', [
             'title' => 'ユーザープロフィール',
+            'user' => $user,
+            'order_items' => $order_items,
         ]);
     }
 
@@ -56,9 +62,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $user = \Auth::user();
+        return view('users.edit', [
+            'title' => 'プロフィール編集',
+            'user' => $user,
+        ]);
     }
 
     /**
@@ -68,9 +78,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        dd('test');
     }
 
     /**
