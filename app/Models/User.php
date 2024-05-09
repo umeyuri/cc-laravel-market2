@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile',
+        'image',
     ];
 
     /**
@@ -54,5 +56,13 @@ class User extends Authenticatable
     //ordersテーブルを介してUserとItemテーブルが多対多
     public function orderItems() {
         return $this->belongsToMany(Item::class, 'orders');
+    }
+
+    public function likes() {
+        return $this->hasMany(Like::class);
+    }
+
+    public function likeItems() {
+        return $this->belongsToMany(Item::class, 'likes');
     }
 }

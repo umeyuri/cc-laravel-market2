@@ -36,4 +36,21 @@ class Item extends Model
         return $this->belongsToMany(User::class, 'orders');
     }
 
+    public function isOrderd($item_id) {
+        return $this->orders()->where('item_id', $item_id)->exists();
+    }
+
+    //likeテーブルを介しての多対多のリレーション設定
+    public function likes() {
+        return $this->hasMany(Like::class);
+    }
+
+    public function likedUsers() {
+        return $this->belongsToMany(User::class, 'likes');
+    }
+
+    //特定のユーザーにいいねされているかどうか
+    public function isLikedBy($user_id) {
+        return $this->likes()->where('user_id', $user_id)->exists();
+    }
 }

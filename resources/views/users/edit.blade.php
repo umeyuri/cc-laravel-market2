@@ -6,7 +6,7 @@
         @csrf
         <div>名前：<input type="text" name="name" value="{{ $user->name }}"></div>
         <div>プロフィール:<br>
-        <textarea>{{ $user->profile }}</textarea></div>
+        <textarea name="profile">{{ $user->profile }}</textarea></div>
         <input type="submit" value="更新">
     </form>
 @endsection
