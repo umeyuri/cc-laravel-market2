@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -21,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile',
+        'image',
     ];
 
     /**
@@ -41,4 +44,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function items() {
+        return $this->hasMany(Item::class);
+    }
+
+    //中間テーブルとのリレーションをまず記載
+    public function orders() {
+        return $this->hasMany(Order::class);
+    }
+    //ordersテーブルを介してUserとItemテーブルが多対多
+    public function orderItems() {
+        return $this->belongsToMany(Item::class, 'orders');
+    }
+
+    public function likes() {
+        return $this->hasMany(Like::class);
+    }
+
+    public function likeItems() {
+        return $this->belongsToMany(Item::class, 'likes');
+    }
 }
