@@ -1,5 +1,3 @@
-<p align="center"><img width="754" alt="image" src="https://github.com/umeyuri/cc-laravel-market2/assets/164736470/5574b1d2-aff1-4bdd-8e5b-1552f03078b9"　width="400"></p>
-
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
